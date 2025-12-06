@@ -102,7 +102,6 @@ Create separate sections for each page:
 1. Save the bookmark JSON file
 2. Open the `.pbip` (shortcut to pbir) file in Power BI Desktop from your Power BI project folder
 3. Test your bookmark across different pages
-Youtube Shorts like of Final Product working: https://youtu.be/AXW-b33GJHI?si=3wZhA5XIJKPpNXtm
 
 ![Final Product](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture11.png)
 
