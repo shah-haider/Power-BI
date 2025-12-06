@@ -1,5 +1,7 @@
 # Control Visuals Across Multiple Power BI Pages with a Single Bookmark
 
+
+**Youtube Link of Detailed Video:** https://youtu.be/3Kixop3FkG0?si=zM0FhwQ1Fc_KfSgC
 Power BI bookmarks are powerful tools for controlling report states, but they're limited to a single page. This guide is a break through in the 10 years history of Power BI hostory, bypassing that limitations using Power BI Project (PBIP) files to create bookmarks that control visuals across your entire report.
 
 ## Why This Matters
@@ -99,6 +101,7 @@ Create separate sections for each page:
 1. Save the bookmark JSON file
 2. Open the `.pbip` (shortcut to pbir) file in Power BI Desktop from your Power BI project folder
 3. Test your bookmark across different pages
+Youtube Shorts like of Final Product working: https://youtu.be/AXW-b33GJHI?si=3wZhA5XIJKPpNXtm
 ![Final Product](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture11.png)
 
 
