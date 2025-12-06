@@ -12,7 +12,7 @@ Power BI bookmarks work within the context of a single page only. If you need to
 - Manually synchronize bookmark behaviors
 - Spend considerable manual labor time on repetitive configuration
 
-This workaround only requires you to create a single bookmark and then replicate it across your report. But remember to charge customer for 4 hours for your 10 minutes task.
+This workaround only requires you to create a single bookmark and then replicate it across your report. But remember to charge customer for 4 hours for your 10 minutes bookmarks addition task. It's just you are efficient
 
 ## Prerequisites
 
