@@ -22,8 +22,9 @@ This workaround only requires you to create a single bookmark and then replicate
 
 1. Open your Power BI Desktop file
 2. In the Preview features in settings, enable **Power Bl Project (.pbip) save** and **Store PBIX reports using enhanced metadata format (PBIR) options**. In the Report settings in Settings, enable **Copy object names when right clicking on report objects** 
-![alt text](image-url)
+![Power BI Settings](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture3.png)
 3. Press Ctrl+S and Upgrade your report format into Power Bl Report enhanced format (PBIR) from PBIR-Legacy format
+![PBIR new format](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture2.png)
 4. Go to **File** → **Save As** and hoose **Power BI Project (.pbip)** as the file type and save to your desired location
 ![PBIP save](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture1.png)
 
@@ -31,7 +32,10 @@ This creates a folder structure containing JSON files that define your report's 
 
 ### 2. Locate the Bookmark JSON File
 
-Navigate to your PBIP project folder:
+Open VSCode and Navigate to Bookmark JSON in your PBIP project folder:
+
+![PBIP Folder in VSCode](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture4.png)
+
 ```
 YourReport.Report/
   ├── definition/
@@ -39,6 +43,7 @@ YourReport.Report/
           └── [BookMarkObjectName].json
 ```
 [Your PowerBI Project folder]\[ReportName].Report\definition\bookmarks\[BookMarkObjectName].bookmark.json
+![Bookmarks JSONs](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture5.png)
 
 
 ### 3. Edit the Bookmark Configuration
@@ -47,9 +52,12 @@ Open the bookmark JSON file in your text editor and modify the following propert
 
 #### Enable Cross-Page Functionality
 Ensure that bookmark in Power BI report is not enabled to work only on Current page, or set `suppressActiveSession` to `true` in JSON file of bookmark:
+![Current Page untick](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture6.png)
+
 ```json
     "suppressActiveSection": true,
 ```
+![suppressActiveSection](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture7.png)
 
 #### Specify Target Visuals
 Add visual object names to the `targetVisualNames` array:
@@ -60,6 +68,7 @@ Add visual object names to the `targetVisualNames` array:
     "visual3ObjectName"
   ]
 ```
+![targetVisualNames](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture8.png)
 
 **Tip:** To find visual object names, copy object name by right-clicking visuals in Power BI desktop, inspect the visual's properties in the PBIP structure or use Tabular Editor.
 
@@ -68,6 +77,7 @@ List the pages where the bookmark should apply:
 ```json
     "activeSection": "Page1ObjectName,Page2ObjectName,Page3ObjectName",
 ```
+![activeSection](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture9.png)
 
 #### Configure Page-Specific Settings
 Create separate sections for each page:
@@ -81,12 +91,15 @@ Create separate sections for each page:
       }
     },
 ```
+![sections](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture10.png)
+
 
 ### 4. Save and Reload
 
 1. Save the bookmark JSON file
 2. Open the `.pbip` (shortcut to pbir) file in Power BI Desktop from your Power BI project folder
 3. Test your bookmark across different pages
+![Final Product](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture11.png)
 
 
 
