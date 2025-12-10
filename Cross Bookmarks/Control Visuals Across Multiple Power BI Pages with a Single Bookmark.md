@@ -1,7 +1,7 @@
 # Control Visuals Across Multiple Power BI Pages with a Single Bookmark
 
 
-**Youtube Link of Detailed Video:** https://youtu.be/3Kixop3FkG0?si=zM0FhwQ1Fc_KfSgC
+**Youtube Link of Detailed Video:** https://youtu.be/Gh7OMZsN6tg & https://youtu.be/3Kixop3FkG0?si=zM0FhwQ1Fc_KfSgC
 
 Power BI bookmarks are powerful tools for controlling report states, but they're limited to a single page. This guide is a break through in the 10 years history of Power BI hostory, bypassing that limitations using Power BI Project (PBIP) files to create bookmarks that control visuals across your entire report.
 
