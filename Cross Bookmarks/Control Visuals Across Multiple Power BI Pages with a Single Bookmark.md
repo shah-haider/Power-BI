@@ -71,6 +71,10 @@ Add visual object names to the `targetVisualNames` array:
     "visual3ObjectName"
   ]
 ```
+You can leave it empty if you want to apply the bookmark to All visuals of all pages:
+```json
+  "targetVisualNames": []
+```
 ![targetVisualNames](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture8.png)
 
 **Tip:** To find visual object names, copy object name by right-clicking visuals in Power BI desktop, inspect the visual's properties in the PBIP structure or use Tabular Editor.
