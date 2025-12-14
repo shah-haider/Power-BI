@@ -1,4 +1,4 @@
-# Control Visuals Across Multiple Power BI Pages with a Single Bookmark
+# Copy Diagram Layouts from Model view Between Semantic Models
 
 Power BI bookmarks are powerful tools for controlling report states, but they're limited to a single page. This guide is a break through in the 10 years history of Power BI hostory, bypassing that limitations using Power BI Project (PBIP) files to create bookmarks that control visuals across your entire report.
 
