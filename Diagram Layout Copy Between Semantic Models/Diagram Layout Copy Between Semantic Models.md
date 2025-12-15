@@ -13,53 +13,28 @@ This guide shows you how to copy layouts in under a minute using PBIP files—or
 
 ## What You'll Learn
 
-- How to export diagram layouts from one semantic model
-- How to import layouts into another semantic model
-- How to use a Python script to automate the entire process
-- How to handle duplicate layout names automatically
+- Step by step go through of diagramLayout JSON file to navigate diagram layouts from one semantic model and copy them to another semantic model
+- A Python script to automate the entire process
 
 ## Prerequisites
 
-- **Power BI Desktop** with PBIP and PBIR format support enabled
+- **Updated Power BI Desktop version** with PBIP and new PBIR format support enabled
 - **A text editor** (VS Code recommended, but Notepad++ works too)
 - **Python** (optional, for automated copying)
 
-## Step-by-Step Guide
+## Step-by-Step Implementation
 
-### 1. Enable Required Preview Features
+### 1. Convert Your Report as new PBIR format and PBIP Format
 
-Before you can work with PBIP files, you need to enable the necessary features:
-
-1. Open Power BI Desktop
-2. Go to **File** → **Options and settings** → **Options**
-3. Navigate to **Preview features**
-4. Enable these options:
-   - ✅ **Power BI Project (.pbip) save**
-   - ✅ **Store PBIX reports using enhanced metadata format (PBIR)**
-5. Go to **Report settings** section
-6. Enable: ✅ **Copy object names when right clicking on report objects**
-7. Click **OK** and restart Power BI Desktop
-
+1. Open your Power BI Desktop file
+2. In the Preview features in settings, enable **Power Bl Project (.pbip) save** and **Store PBIX reports using enhanced metadata format (PBIR) options**. In the Report settings in Settings, enable **Copy object names when right clicking on report objects** 
 ![Power BI Settings](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture3.png)
+3. Press Ctrl+S and Upgrade your report format into Power Bl Report enhanced format (PBIR) from PBIR-Legacy format
+![PBIR new format](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture2.png)
+4. Go to **File** → **Save As** and hoose **Power BI Project (.pbip)** as the file type and save to your desired location
+![PBIP save](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture1.png)
 
-### 2. Convert Your Reports to PBIP Format
-
-#### Upgrade to PBIR Format (One-time step)
-
-1. Open your existing Power BI Desktop file
-2. Press **Ctrl+S** to save
-3. You'll see a prompt to upgrade to the enhanced format (PBIR)
-4. Click **Upgrade**
-
-![PBIR Format Upgrade](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture2.png)
-
-#### Save as PBIP
-
-1. Go to **File** → **Save As**
-2. Choose **Power BI Project (.pbip)** as the file type
-3. Select your desired location and save
-
-![Save as PBIP](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture1.png)
+This creates a folder structure containing JSON files that define your report's metadata.
 
 **Do this for both:**
 - Your **source** file (the one with the layout you want to copy)
@@ -67,26 +42,29 @@ Before you can work with PBIP files, you need to enable the necessary features:
 
 This creates a project folder structure with editable JSON files.
 
-### 3. Locate the DiagramLayout JSON Files
+### 2. Locate the DiagramLayout JSON Files
 
 After saving as PBIP, you'll have a folder structure like this:
 
 ```
-YourReport/
-├── YourReport.pbip (shortcut file)
-└── YourReport.SemanticModel/
+PowerBIProjectFolder/
+├── YourSemanticModel.pbip (shortcut file)
+├── YourSemanticModel.Report/
+└── YourSemanticModel.SemanticModel/
     ├── definition/
-    │   └── tables/
-    ├── diagramLayout.json  ← This is what you need!
-    └── model.bim
+    ├── TMDLScripts/
+    ├── .pbi/
+    ├── .platform
+    ├── .definition.pbism
+    └── diagramLayout.json  ← This is what you need!
 ```
 
 **File path pattern:**
 ```
-[PowerBI Project Folder]\[SemanticModelName].SemanticModel\diagramLayout.json
+[PowerBI Project Folder]\[YourSemanticModel].SemanticModel\diagramLayout.json
 ```
 
-Open both the **source** and **target** `diagramLayout.json` files in VS Code (or your preferred editor).
+Open both the **source** and **target** `diagramLayout.json` files in VS Code (or your preferred editor). 
 
 ### 4. Understanding the DiagramLayout Structure
 
@@ -96,27 +74,44 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
 {
   "version": "1.1.0",
   "diagrams": [
+    { //Code for first layout. It is All tables default layout
+    },
+    { //Code for second layout
+    }, 
+    //Code for the layout to be copied starts here
     {
-      "ordinal": 0,
-      "scrollPosition": { "x": 0, "y": 0 },
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
       "nodes": [
         {
-          "location": { "x": 307, "y": 100 },
+          "location": {
+            "x": 307,
+            "y": 100
+          },
           "nodeIndex": "Product",
           "nodeLineageTag": "f6ccdb91-4c18-4fd2-bb41-3b7425ba1677",
-          "size": { "height": 300, "width": 234 },
+          "size": {
+            "height": 300,
+            "width": 234
+          },
           "zIndex": 0
         }
       ],
-      "name": "Sales Model",  ← Layout name
+      "name": "Layout To be Copied",
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
+    },
+    //Code for Layout to be copied ends here
+    { //Code for forth Layout
     }
   ],
-  "selectedDiagram": "Sales Model",
+  "selectedDiagram": "Layout To be Copied",
   "defaultDiagram": "All tables"
 }
 ```
