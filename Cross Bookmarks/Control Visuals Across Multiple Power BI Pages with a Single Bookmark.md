@@ -9,6 +9,7 @@
 | Merge Bookmarks into existing bookmark | Merge Bookmarks into a new bookmark |
 
 
+
 Power BI bookmarks are powerful tools for controlling report states, but they're limited to a single page. This guide shows you how to bypass that limitation using Power BI Project (PBIP) files to create bookmarks that control visuals across your entire report.
 
 ## Why This Matters
