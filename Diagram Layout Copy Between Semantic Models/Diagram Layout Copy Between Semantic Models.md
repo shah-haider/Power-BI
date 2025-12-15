@@ -142,7 +142,10 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
 4. **Important:** Add a comma after the previous diagram object if needed
 5. **Check for duplicate names:** If a layout with the same name exists, rename it
 
-{tip: VSCode Json structure vanigation and expanding collapsnig objects in diagram array.
+**Tip:** In VSCode navigate JSON file structure by clicking top of the opened file (highlighted in green) to find Layout name and to copy part of code easily, collapse objects in the diagram array by clicking left button.
+
+![Json object navigation](https://github.com/shah-haider/Power-BI/blob/main/Diagram%20Layout%20Copy%20Between%20Semantic%20Models/Images%20for%20Diagram%20Layouts/json%20struct%20navig.png)
+![Json Expand/collapse](https://github.com/shah-haider/Power-BI/blob/main/Diagram%20Layout%20Copy%20Between%20Semantic%20Models/Images%20for%20Diagram%20Layouts/Expand%20collapse%20json%20objects.png)
 
 
 #### Save and Test
