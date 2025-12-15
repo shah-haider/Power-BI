@@ -101,6 +101,12 @@ Create separate sections for each page:
 ![sections](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture10.png)
 
 
+**Tip:** In VSCode navigate JSON file structure by clicking top of the opened file (highlighted in green) to find Layout name and to copy part of code easily, collapse objects in the diagram array by clicking left button.
+
+![Json object navigation](https://github.com/shah-haider/Power-BI/blob/main/Diagram%20Layout%20Copy%20Between%20Semantic%20Models/Images%20for%20Diagram%20Layouts/json%20struct%20navig.png)
+![Json Expand/collapse](https://github.com/shah-haider/Power-BI/blob/main/Diagram%20Layout%20Copy%20Between%20Semantic%20Models/Images%20for%20Diagram%20Layouts/Expand%20collapse%20json%20objects.png)
+
+
 ### 4. Save and Reload
 
 1. Save the bookmark JSON file
