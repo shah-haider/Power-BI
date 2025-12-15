@@ -3,6 +3,10 @@
 
 **Youtube Link of Detailed Video:** https://youtu.be/Gh7OMZsN6tg & https://youtu.be/3Kixop3FkG0?si=zM0FhwQ1Fc_KfSgC
 
+[![Watch the video](https://img.youtube.com/vi/3Kixop3FkG0/maxresdefault.jpg)](https://www.youtube.com/watch?v=3Kixop3FkG0)
+
+**▶️ Click to watch the tutorial**
+
 Power BI bookmarks are powerful tools for controlling report states, but they're limited to a single page. This guide shows you how to bypass that limitation using Power BI Project (PBIP) files to create bookmarks that control visuals across your entire report.
 
 ## Why This Matters
