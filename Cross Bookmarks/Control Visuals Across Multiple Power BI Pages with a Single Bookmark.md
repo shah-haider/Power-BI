@@ -156,7 +156,10 @@ Create separate sections for each page:
 
 ## Contributing
 
-Found improvements or additional tips? Feel free to open an issue or submit a pull request!
+Found a better way to do this? Have suggestions for the Python script? Feel free to:
+- Open an issue
+- Submit a pull request
+- Share your improvements at shahhaider902@gmail.com or contact me at LinkedIn: https://www.linkedin.com/in/syed-haider-ali-shah/
 
 ## License
 
