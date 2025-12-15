@@ -28,10 +28,15 @@ This guide shows you how to copy layouts in under a minute using PBIP files—or
 
 1. Open your Power BI Desktop file
 2. In the Preview features in settings, enable **Power Bl Project (.pbip) save** and **Store PBIX reports using enhanced metadata format (PBIR) options**. In the Report settings in Settings, enable **Copy object names when right clicking on report objects** 
+
 ![Power BI Settings](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture3.png)
+
 3. Press Ctrl+S and Upgrade your report format into Power Bl Report enhanced format (PBIR) from PBIR-Legacy format
+
 ![PBIR new format](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture2.png)
+
 4. Go to **File** → **Save As** and hoose **Power BI Project (.pbip)** as the file type and save to your desired location
+
 ![PBIP save](https://github.com/shah-haider/Power-BI/blob/main/Cross%20Bookmarks/Images%20for%20Cross-Bookmarks/Picture1.png)
 
 This creates a folder structure containing JSON files that define your report's metadata.
