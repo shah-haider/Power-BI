@@ -1,14 +1,13 @@
 # Copy Model View Diagram Layouts Between Power BI Semantic Models
 
-Stop manually dragging tables one by one to recreate your Model View layout. With Power BI Project (PBIP) files, you can copy entire diagram layouts between semantic models in seconds by working with a simple JSON file.
+Stop manually dragging tables one by one to recreate your Model View layout. With Power BI Project (PBIP) files, you can copy entire diagram layouts between semantic models in seconds by working with a light and simple JSON file.
 
 ## Why This Matters
 
 When migrating to a new semantic model or collaborating with colleagues, recreating your carefully organized Model View diagram layout is tedious. You typically have to:
 - Drag each table individually to match the original positions
 - Resize tables to fit your preferred view
-- Remember which tables were grouped together
-- Spend 15-30 minutes (or more) on repetitive manual work
+- Spend 15-30 minutes (or more) on a manual useless work
 
 This guide shows you how to copy layouts in under a minute using PBIP files—or even faster with a Python script.
 
