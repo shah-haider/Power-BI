@@ -100,7 +100,7 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
           "zIndex": 0
         }
       ],
-      "name": "Layout To be Copied",
+      "name": "Product View", ← Layout name
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
@@ -123,7 +123,7 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
 - `selectedDiagram`: Currently active layout
 - `defaultDiagram`: Layout shown by default
 
-### 5. Manual Copy Method
+### 5. Copy the Layout to destination pbip
 
 #### Copy the Layout
 
@@ -131,21 +131,6 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
 2. Find the layout you want to copy in the `diagrams` array
 3. Copy the entire diagram object (from opening `{` to closing `}`)
 
-**Example - copying "Sales Model" layout:**
-
-```json
-{
-  "ordinal": 0,
-  "scrollPosition": { "x": 0, "y": 0 },
-  "nodes": [ /* ... table positions ... */ ],
-  "name": "Sales Model",
-  "zoomValue": 100,
-  "pinKeyFieldsToTop": false,
-  "showExtraHeaderInfo": false,
-  "hideKeyFieldsWhenCollapsed": false,
-  "tablesLocked": false
-}
-```
 
 #### Paste into Target
 
@@ -155,32 +140,15 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
 4. **Important:** Add a comma after the previous diagram object if needed
 5. **Check for duplicate names:** If a layout with the same name exists, rename it
 
-**Example - adding to target:**
+{tip: VSCode Json structure vanigation and expanding collapsnig objects in diagram array.
 
-```json
-{
-  "version": "1.1.0",
-  "diagrams": [
-    {
-      "name": "Existing Layout"
-      /* ... existing layout ... */
-    },  ← Don't forget this comma!
-    {
-      "name": "Sales Model",  ← Your pasted layout
-      /* ... copied layout ... */
-    }
-  ],
-  "selectedDiagram": "All tables",
-  "defaultDiagram": "All tables"
-}
-```
 
 #### Save and Test
 
 1. Save the target `diagramLayout.json` file
 2. Open the target `.pbip` file in Power BI Desktop
 3. Go to **Model View**
-4. Check the layout dropdown—your copied layout should appear!
+4. Your copied layout should appear!
 5. Select it to see your tables positioned exactly as in the source
 
 ### 6. Automated Method with Python Script
@@ -224,8 +192,6 @@ def write_json_atomic(path, data):
     os.close(fd)
     with open(tmp_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
-    if os.path.exists(path):
-        shutil.copy2(path, path + ".bak")
     os.replace(tmp_path, path)
 
 
@@ -337,7 +303,7 @@ def main():
     write_json_atomic(dst_diagram_path, dst_json)
     for src_name, new_name in copied:
         print(f"Copied '{src_name}' -> '{new_name}'")
-    print(f"Wrote {dst_diagram_path} (backup saved as .bak)")
+    print(f"Wrote {dst_diagram_path}")
 
 
 if __name__ == "__main__":
@@ -346,30 +312,30 @@ if __name__ == "__main__":
 
 #### How to Use the Script
 
-1. **Save the script** as `copy_diagram_layouts.py`
+1. **Save the script** as `copy_diagram_layouts.py` in your laptop
 
-2. **Run it:**
-   ```bash
-   python copy_diagram_layouts.py
-   ```
+2. **Run it** in VSCode or any other python interpreter you have.
 
 3. **Follow the prompts:**
    ```
-   Enter source path: C:\Projects\OldModel.pbip
-   ✓ Found source: C:\Projects\OldModel.SemanticModel\diagramLayout.json
+   Source PBIP path: [Enter your source pbip path here. For example: C:\Users\shahh\Downloads\PBIPSource\AdventureWorks Sales.pbip]
    
-   Enter target path: C:\Projects\NewModel.pbip
-   ✓ Found target: C:\Projects\NewModel.SemanticModel\diagramLayout.json
+   Destination PBIP path: [Enter your destination pbip path here. For example: C:\Users\shahh\Downloads\PBIPdest\Retail Sales.pbip]
    
    Available layouts in source:
-   1. Sales Analysis
-   2. Product Hierarchy
-   3. Customer View
+   1. All tables
+   2. Layout 1
+   3. Sales temp
    
-   Enter layouts to copy: all
+   Enter diagram names or numbers to copy (comma-separated), or 'all': all
    
-   ✓ Copy completed successfully!
-   Layouts copied: 3
+   Copied 'All tables' -> 'All tables (1)'
+   Copied 'Layout 1' -> 'Layout 1'
+   Copied 'Sales temp' -> 'Sales temp'
+
+   Wrote C:\Users\shahh\Downloads\PBIPdest\Retail Sales.SemanticModel\diagramLayout.json
+
+
    ```
 
 4. **Flexible input options:**
@@ -402,8 +368,8 @@ A colleague has perfectly organized their Model View. They send you just the `di
 ### Scenario 3: Template Reuse
 You have a standard layout for star schema models. Save it once and reuse it across all new projects.
 
-### Scenario 4: Client Deliverables
-You're delivering a model to a client. Copy your organized layouts to their version so they have a clean, professional Model View from day one.
+### Scenario 4: Client Deliverables **Common one**
+You're delivering a model to a client. Noob developer client has messed up the Layout and asking you to recreate the Layout. Copy your organized layouts to their version so they have a clean, professional Model View from day one.
 
 ## Troubleshooting
 
@@ -419,20 +385,19 @@ You're delivering a model to a client. Copy your organized layouts to their vers
 **Possible causes:**
 - Table names don't match between models
 - The `nodeIndex` values reference different tables
-- Tables were renamed in the target model
+- Tables were renamed or missing in the target model
 
-**Solution:** The layout references table names. Ensure table names match exactly between source and target.
+**Solution:** The layout references table names. Ensure table names match exactly between source and target. You do not need to worry about columns in the tables as diagramLayout file only refers to tables.
 
 ### Python script can't find files
 
 **Check:**
 - Are you using the correct file path?
-- Did you include quotes if the path has spaces?
 - Is the PBIP folder structure intact? (Don't rename folders)
 
 ### Duplicate layout name error
 
-**Manual fix:** Rename one of the layouts before copying:
+**Manual fix:** Rename one of the layouts before copying, else only the first occurence of the duplicate layout from your diagramLayout.json file will appear in your semantic model:
 ```json
 "name": "Sales Model (New)"
 ```
@@ -470,25 +435,17 @@ You're delivering a model to a client. Copy your organized layouts to their vers
 
 **Time savings:** From 30 minutes to 30 seconds = **60× faster**
 
-## Additional Resources
-
-- [Power BI Project Format Documentation](https://learn.microsoft.com/power-bi/developer/projects/projects-overview)
-- [Model View in Power BI](https://learn.microsoft.com/power-bi/transform-model/desktop-relationship-view)
-- [JSON Tutorial](https://www.json.org/)
 
 ## What's Next?
 
-Want to learn more Power BI automation techniques? Check out these related guides:
-- Cross-page bookmarks with PBIP files
-- Batch measure creation with Tabular Editor
-- Automated documentation generation
+Want to learn more Power BI automation techniques? Check out these other guides in my Power BI GitHub Repository.
 
 ## Contributing
 
 Found a better way to do this? Have suggestions for the Python script? Feel free to:
 - Open an issue
 - Submit a pull request
-- Share your improvements
+- Share your improvements at shahhaider902@gmail.com or contact me at LinkedIn: https://www.linkedin.com/in/syed-haider-ali-shah/
 
 ## License
 
