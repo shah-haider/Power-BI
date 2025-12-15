@@ -77,7 +77,8 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
     { //Code for first layout. It is All tables default layout
     },
     { //Code for second layout
-    }, 
+    },
+
     //Code for the layout to be copied starts here
     {
       "ordinal": 2,
@@ -108,6 +109,7 @@ The `diagramLayout.json` file contains all your Model View layouts. Here's what 
       "tablesLocked": false
     },
     //Code for Layout to be copied ends here
+
     { //Code for forth Layout
     }
   ],
